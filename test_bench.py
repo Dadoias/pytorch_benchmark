@@ -56,7 +56,7 @@ def pytest_generate_tests(metafunc):
 )
 class TestBenchNetwork:
 
-    def test_train(self, model_path, device, compiler, benchmark):
+    def test_train(self, model_path, device, benchmark):
         try:
             if skip_by_metadata(test="train", device=device, extra_args=[], \
                                 metadata=get_metadata_from_yaml(model_path)):
@@ -79,7 +79,7 @@ class TestBenchNetwork:
         except NotImplementedError:
             print(f'Test train on {device} is not implemented, skipping...')
 
-    def test_eval(self, model_path, device, compiler, benchmark, pytestconfig):
+    def test_eval(self, model_path, device, benchmark, pytestconfig):
         try:
             if skip_by_metadata(test="eval", device=device, extra_args=[], \
                                 metadata=get_metadata_from_yaml(model_path)):
